@@ -99,18 +99,18 @@ switch (TypeOfTx) {
 
 printf("{");
 printf("\"gamma\":{\"real\":%.10Lf,\"imag\":%.10Lf},", alpha, beta);
-printf("\"alpha\":%.10Lf,", alpha);
-printf("\"beta\":%.10Lf,", beta);
-printf("\"Z_0\":{\"real\":%.10Lf,\"imag\":%.10Lf},", creal(Z_0), cimag(Z_0));
-printf("\"phaseVelocity\":%.10Lf,", phaseVelocity);
-printf("\"Lambda\":%.10Lf,", lamda);
+printf("\"alpha\":%.10Le,", alpha);
+printf("\"beta\":%.10Le,", beta);
+printf("\"Z_0\":{\"real\":%.10Le,\"imag\":%.10Le},", creal(Z_0), cimag(Z_0));
+printf("\"phaseVelocity\":%.10Le,", phaseVelocity);
+printf("\"Lambda\":%.10Le,", lamda);
 
 printf("\"inputs\":{");
-printf("\"w\":%.10LF,", w);
-printf("\"Rbar\":%.10LF,", Rbar);
-printf("\"Gbar\":%.10LF,", Gbar);
-printf("\"Lbar\":%.10LF,", Lbar);
-printf("\"Cbar\":%.10LF,", Cbar);
+printf("\"w\":%.10Le,", w);
+printf("\"Rbar\":%.10Le,", Rbar);
+printf("\"Gbar\":%.10Le,", Gbar);
+printf("\"Lbar\":%.10Le,", Lbar);
+printf("\"Cbar\":%.10Le,", Cbar);
 printf("\"TypeOfTx\":%d", TypeOfTx);
 printf("}");
 

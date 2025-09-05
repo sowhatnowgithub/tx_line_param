@@ -15,9 +15,9 @@ int main(int argc, char *argv[]) { // Z_0 beta omega
 	ld Cbar;
 	ld Lbar;
 	if(argc == 3) {
-		Z_0 = convertToPositive(atof(argv[1]));
-		beta = convertToPositive(atof(argv[2]));
-		omega = convertToPositive(atof(argv[3]));
+		omega = convertToPositive(atof(argv[1]));
+		Z_0 = convertToPositive(atof(argv[2]));
+		beta = convertToPositive(atof(argv[3]));
 	} else {
 		printf("Insuffiecient Args");
 		return 0;
@@ -27,13 +27,13 @@ int main(int argc, char *argv[]) { // Z_0 beta omega
 	Lbar = Z_0*Z_0*Cbar;
 	printf("{");
 printf("\"inputs\":{");
-printf("\"w\":%.10LF,", omega);
-printf("\"Beta\":%.10LF,", beta);
-printf("\"omega\":%.10LF,", Z_0);
+printf("\"omega\":%.10Le,", omega);
+printf("\"Beta\":%.10Le,", beta);
+printf("\"z_0\":%.10Le", Z_0);
 printf("},");
 printf("\"outputs\":{");
-printf("\"LBar\":%.10LF,", Lbar);
-printf("\"CBar\":%.10LF,", Cbar);
+printf("\"LBar\":%.10Le,", Lbar);
+printf("\"CBar\":%.10Le", Cbar);
 printf("}");
 
 printf("}");

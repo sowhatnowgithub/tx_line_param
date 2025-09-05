@@ -6,8 +6,7 @@ EM ass_2
 </title>
 </head>
 <body>
-
-<h1>Welcome</h1>
+<a href='/'>Go Back</a><br>
 <h3>Find the Paramaters <br> gamma(propagation constant),<br> alpha,<br> Beta (phase constant),<br> phase veloicty,<br> characteristic impedence,<br> lamda from R L G C and Omeag(2*pi*F),
 </h3>
 
