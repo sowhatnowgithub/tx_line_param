@@ -31,7 +31,7 @@ echo "<br><br>";
 echo "<a href='web/algo5.php'>Algo Five : Finding the standing waveform</a>";
 echo "<br><br>";
 echo "<a href='/algo6.php'>Algo Six: Find load impedance using Characteristic Impedance and Voltage Reflection Coeff</a>";
-echo "</div>";
+echo "</div> <hr>";
 ?>
   </body>
 </html>
