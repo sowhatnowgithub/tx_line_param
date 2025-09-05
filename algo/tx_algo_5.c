@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) { // alpha beta Z_0 volRef_mag volReg_phase V0_
 		return 0;
 	}
 	
-	long double d; // distance
+double d; // distance
 
 	lamda = 2 * M_PI / beta;
 	long double Vmax = 1 + volRef_mag;
@@ -46,18 +46,26 @@ int main(int argc, char *argv[]) { // alpha beta Z_0 volRef_mag volReg_phase V0_
 	// we will increase d from o to lambda and then take all the values and then store them in an array and give them as json
 	
 	d = lamda;
-		d = d/100;
 		int count = 0;
-	while( count != 100) {
-		double delta = 1/100;
+		double delta = d/100.00;
+	while( d != 0 && count != 100) {
+
 		V[count][0] = d;
 		I[count][0] = d;
 		V[count][1] = V0*sqrt(1+(volRef_mag*volRef_mag)+(2*volRef_mag*cos((2*beta*d)-volRef_phase)));
 		I[count][1] = V[count][1]/Z_0;
-		if(d < 0) {
-			d = 0;
-		}
+		d = d - delta;
 		count++;
+		if(d <= 2* delta) {
+			d = 0;
+V[count][0] = d;
+		I[count][0] = d;
+			V[count][1] = V0*sqrt(1+(volRef_mag*volRef_mag)+(2*volRef_mag*cos(-1*volRef_phase)));
+		I[count][1] = V[count][1]/Z_0;
+		count++;
+		break;
+		}
+		
 	}
 printf("{");
 printf("\"inputs\":{");

@@ -76,11 +76,11 @@ displayData($result);
 
 <h2>d vs V(d) Plot</h2>
 <canvas id="VoltageCanvas" width="800" height="400"></canvas>
-<h2>d vs I(d) Plot</h2>
 
-<canvas id="CurrentCanvas" width="800" height="400"></canvas>
+<canvas id="currentCanvas" width="800" height="400"></canvas>
 
 
+<canvas id="myCanvas" width="800" height="400"></canvas>
 
 <script>
 function plotDataOnCanvas(canvasId, datasets, xLabel = 'x', yLabel = 'y') {
@@ -97,17 +97,22 @@ function plotDataOnCanvas(canvasId, datasets, xLabel = 'x', yLabel = 'y') {
     // Clear canvas
     ctx.clearRect(0, 0, width, height);
 
+    // Margins
     const margin = 50;
+
+    // Extract X and Y
     const xs = datasets.map(p => p[0]);
     const ys = datasets.map(p => p[1]);
 
+    // Get min and max
     const xMin = Math.min(...xs);
     const xMax = Math.max(...xs);
     const yMin = Math.min(...ys);
     const yMax = Math.max(...ys);
 
-    const mapX = x => margin + ((x - xMin) / (xMax - xMin)) * (width - 2 * margin);
-    const mapY = y => height - margin - ((y - yMin) / (yMax - yMin)) * (height - 2 * margin);
+    // Scale functions
+    const scaleX = x => margin + ((x - xMin) / (xMax - xMin)) * (width - 2 * margin);
+    const scaleY = y => height - margin - ((y - yMin) / (yMax - yMin)) * (height - 2 * margin);
 
     // Draw axes
     ctx.beginPath();
@@ -127,7 +132,7 @@ function plotDataOnCanvas(canvasId, datasets, xLabel = 'x', yLabel = 'y') {
     ctx.fillText(xLabel, width - margin + 20, height - margin + 5);
     ctx.fillText(yLabel, margin - 30, margin - 10);
 
-    // Ticks and labels
+    // Ticks and labels (every ~10 steps)
     const steps = 10;
     const xStep = (xMax - xMin) / steps;
     const yStep = (yMax - yMin) / steps;
@@ -136,16 +141,18 @@ function plotDataOnCanvas(canvasId, datasets, xLabel = 'x', yLabel = 'y') {
     ctx.font = "12px sans-serif";
 
     for (let i = 0; i <= steps; i++) {
+        // X axis ticks
         const xVal = xMin + i * xStep;
-        const x = mapX(xVal);
+        const x = scaleX(xVal);
         ctx.beginPath();
         ctx.moveTo(x, height - margin - 5);
         ctx.lineTo(x, height - margin + 5);
         ctx.stroke();
         ctx.fillText(xVal.toFixed(1), x - 10, height - margin + 20);
 
+        // Y axis ticks
         const yVal = yMin + i * yStep;
-        const y = mapY(yVal);
+        const y = scaleY(yVal);
         ctx.beginPath();
         ctx.moveTo(margin - 5, y);
         ctx.lineTo(margin + 5, y);
@@ -156,8 +163,8 @@ function plotDataOnCanvas(canvasId, datasets, xLabel = 'x', yLabel = 'y') {
     // Draw data line
     ctx.beginPath();
     datasets.forEach(([x, y], idx) => {
-        const px = mapX(x);
-        const py = mapY(y);
+        const px = scaleX(x);
+        const py = scaleY(y);
         if (idx === 0) {
             ctx.moveTo(px, py);
         } else {
@@ -167,39 +174,15 @@ function plotDataOnCanvas(canvasId, datasets, xLabel = 'x', yLabel = 'y') {
     ctx.strokeStyle = "#007bff";
     ctx.lineWidth = 2;
     ctx.stroke();
-
-    // Draw labels every 10 points
-    ctx.fillStyle = "black";
-    ctx.font = "10px sans-serif";
-    datasets.forEach((point, index) => {
-        if (index % 4 === 0) {
-            const x = mapX(point[0]);
-            const y = mapY(point[1]);
-
-            // Draw a small circle
-            ctx.beginPath();
-            ctx.arc(x, y, 2, 0, 2 * Math.PI);
-            ctx.fill();
-
-            // Label the point
-            ctx.fillText(`(${point[0].toFixed(1)}, ${point[1].toFixed(3)})`, x + 5, y - 5);
-        }
-    });
 }
+const rawData = <?php echo "`".$V."`"?>;
+    const voltageData = JSON.parse(rawData);
 
-
-const rawData = <?php echo "`".$V."`" ;?>;
-const voltageData = JSON.parse(rawData);
-plotDataOnCanvas("VoltageCanvas", voltageData, "d","V(d)");
-const rawData2 = <?php echo "`".$I."`" ;?>;
-const currentData = JSON.parse(rawData2);
-plotDataOnCanvas("CurrentCanvas", currentData, "d","I(d)");
-
+plotDataOnCanvas("voltageCanvas", voltageData, "d","V(d)");
 </script>
 
 <?php
-    
-echo "<br>";
+    // Display V
 require "../web/algo5.php";
     echo "<h3>Voltage (V) Samples</h3>";
     echo "<table border='1' cellpadding='5' cellspacing='0'>";
