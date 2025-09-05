@@ -26,9 +26,9 @@ int main(int argc, char *argv[]) { // alpha beta Z_0 volRef_mag volReg_phase V0_
 	argc--;
 
 	if(argc == 6) {
-		alpha = convertToPositive(atof(argv['1']));
-		beta = convertToPositive(atof(argv['2']));
-		Z_0 = convertToPositive(atof(argv['3']));
+		alpha = convertToPositive(atof(argv[1]));
+		beta = convertToPositive(atof(argv[2]));
+		Z_0 = convertToPositive(atof(argv[3]));
 		volRef_mag = convertToPositive(atof(argv[4]));
 		volRef_phase = atof(argv[5]);
 		V0 = convertToPositive(atof(argv[6]));
