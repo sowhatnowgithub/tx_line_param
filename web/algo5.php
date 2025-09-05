@@ -8,7 +8,7 @@ EM ass_2
 <body>
 
 <a href='/'>Go Back</a><br>
-<h1>Welcome</h1>
+<h1>Algo-5</h1>
 <h3>Find the standing wave waveform from <br>alpha,<br> Beta (phase constant),<br> characteristic impedence <br> Input voltage magnitude <br> Reflection Coeffi mag and phase
 </h3>
 

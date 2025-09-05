@@ -8,7 +8,7 @@ EM ass_2
 <body>
 
 <a href='/'>Go Back</a><br>
-<h1>Welcome</h1>
+<h1>Algo-3</h1>
 <h3>Find the Paramaters R, G, L and C from <br> Omega,<br>alpha,<br> Beta (phase constant),<br> characteristic impedence
 </h3>
 
