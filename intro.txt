@@ -1,0 +1,22 @@
+ *algo tries to calculate the  transmission lines parameters
+ * We will first calculate the Parameter R' L' G' C' parameter per unit length, 
+ *  based on the Coaxial (0), Two Wire (1), Parallel Plate (2)
+ * We get R' G' L' C'
+ * From this we can calculate the main parameters, 
+ * Gamma, Alpha, Beta ,Phase Velocity, Characteristic Impedance, And Volate Reflection Coefficient
+ * The above vary for General Case (0), Loseless Case (1), Distortionless Case (2); the following are neglected, requires extra param
+ Loseless Coaxial (2), Loseless two-wire (3), Loseless Paralllel Wire (4). 
+ *
+
+
+/*  R' G' L' C' w will be called as First Hand Param*/
+	/* Gamma, Alpha, Beta, phase velocity, characteristic Impedance will called Second Hand Param*/
+	/* If First Hand Param are Given, we will find the Second Hand Param*/
+
+Some points to remember
+1. For all TEM lines
+L'C' = permeability * permitivity
+G'/C' = conductivity/permitivity
+
+// Second Algo takes argument takes in Z_0 omega beta
+
