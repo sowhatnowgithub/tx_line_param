@@ -59,6 +59,39 @@ int main(int argc, char *argv[]) { // alpha beta Z_0 volRef_mag volReg_phase V0_
 		}
 		count++;
 	}
+printf("{");
+printf("\"inputs\":{");
+printf("\"V0\":%Le,", V0);
+printf("\"volRef_mag\":%Le,", volRef_mag);
+printf("\"volRef_phase\":%Le,", volRef_phase);
+printf("\"alpha\":%Le,", alpha);
+printf("\"beta\":%Le,", beta);
+printf("\"Z_0\":%Le,", Z_0);
+printf("\"lamda\":%Le", lamda);
+printf("},");
+
+printf("\"outputs\":{");
+printf("\"lamda\":%Le,", lamda);
+printf("\"Vmax\":%Le,", Vmax);
+printf("\"Vmin\":%Le,", Vmin);
+printf("\"VSWR\":%Le", VSWR);
+printf("},");
+
+printf("\"V\":[");
+for (int i = 0; i < 100; i++) {
+    printf("[%Le,%Le]%s", V[i][0], V[i][1], (i == 99) ? "" : ",");
+}
+printf("],");
+
+printf("\"I\":[");
+for (int i = 0; i < 100; i++) {
+    printf("[%Le,%Le]%s", I[i][0], I[i][1], (i == 99) ? "" : ",");
+}
+printf("]");
+
+printf("}");
+
+
 
 	return 0;
 }
