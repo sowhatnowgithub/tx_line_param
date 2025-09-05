@@ -26,7 +26,7 @@ echo "<a href='web/algo2.php'>Algo Two : For a loss less Tx, Find L, C</a>";
 echo "<br><br>";
 echo "<a href='web/algo3.php'>Algo Three : For a Distortion Less Tx line, find R, L, G, C</a>";
 echo "<br><br>";
-echo "<a href='web/algo4.php'>Algo Four : Finding the voltage reflection coefficient and Voltage Standing Wave Ration, using impedances</a>";
+echo "<a href='web/algo4.php'>Algo Four : Finding the voltage reflection coefficient using  impedances</a>";
 echo "<br><br>";
 echo "<a href='web/algo5.php'>Algo Five : Finding the standing waveform</a>";
 echo "<br><br>";
